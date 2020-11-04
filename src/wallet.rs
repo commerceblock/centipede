@@ -50,7 +50,7 @@ pub fn generate_random_point(bytes: &[u8]) -> GE {
         return result.unwrap();
     } else {
         let two = BigInt::from(2);
-        let bn = BigInt::from(bytes);
+        let bn = BigInt::from_vec(bytes);
         let bn_times_two = BigInt::mod_mul(&bn, &two, &FE::q());
         let bytes = BigInt::to_vec(&bn_times_two);
         return generate_random_point(&bytes);
@@ -60,14 +60,15 @@ pub fn generate_random_point(bytes: &[u8]) -> GE {
 #[cfg(test)]
 mod tests {
     use curv::BigInt;
+    use curv::arithmetic::traits::Converter;
     use wallet::SecretShare;
     #[test]
     fn test_randomness() {
         let x = SecretShare::generate();
         let bitcoin_label = String::from("Bitcoin1").into_bytes();
         let ethereum_label = String::from("Ethereum1").into_bytes();
-        let label_btc = BigInt::from(&bitcoin_label[..]);
-        let label_eth = BigInt::from(&ethereum_label[..]);
+        let label_btc = BigInt::from_vec(&bitcoin_label[..]);
+        let label_eth = BigInt::from_vec(&ethereum_label[..]);
         let randmoness_btc = x.generate_randomness(&label_btc);
         let randmoness_eth = x.generate_randomness(&label_eth);
         assert_ne!(randmoness_btc, randmoness_eth)

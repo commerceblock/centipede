@@ -16,6 +16,7 @@ version 3 of the License, or (at your option) any later version.
 */
 const SECRETBITS: usize = 256;
 use curv::elliptic::curves::traits::*;
+use curv::arithmetic::big_num::{Pow, Zero};
 use curv::{BigInt, FE, GE};
 use juggling::proof_system::{Helgamal, Helgamalsegmented, Witness};
 use rayon::prelude::*;
@@ -31,8 +32,8 @@ impl Msegmentation {
         let msb = segment_size_u32 * (k as u32 + 1);
         let lsb = segment_size_u32 * k as u32;
         let two_bn = BigInt::from(2);
-        let max = BigInt::pow(&two_bn, msb) - BigInt::from(1);
-        let min = BigInt::pow(&two_bn, lsb) - BigInt::from(1);
+        let max = two_bn.pow(msb) - BigInt::from(1);
+        let min = two_bn.pow(lsb) - BigInt::from(1);
         let mask = max - min;
         let segment_k_bn = mask & ss_bn;
         let segment_k_bn_rotated =

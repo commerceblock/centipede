@@ -71,7 +71,7 @@ impl Proof {
         let nm = n * m;
         // some seed for generating g and h vectors
         let KZen: &[u8] = &[75, 90, 101, 110];
-        let kzen_label = BigInt::from(KZen);
+        let kzen_label = BigInt::from_vec(KZen);
 
         let g_vec = (0..nm)
             .map(|i| {
@@ -154,7 +154,7 @@ impl Proof {
         let nm = n * m;
         // some seed for generating g and h vectors
         let KZen: &[u8] = &[75, 90, 101, 110];
-        let kzen_label = BigInt::from(KZen);
+        let kzen_label = BigInt::from_vec(KZen);
 
         let g_vec = (0..nm)
             .map(|i| {
@@ -222,7 +222,7 @@ impl Proof {
         let nm = n * m;
         // some seed for generating g and h vectors
         let KZen: &[u8] = &[75, 90, 101, 110];
-        let kzen_label = BigInt::from(KZen);
+        let kzen_label = BigInt::from_vec(KZen);
 
         let g_vec = (0..nm)
             .map(|i| {

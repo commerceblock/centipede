@@ -10,14 +10,11 @@ authors = [
 crate-type = ["lib"]
 
 [dependencies]
-curv = { git = "https://github.com/commerceblock/curv", features =  ["ec_secp256k1"] ,tag = "v0.2.7"}
-bulletproof = {git = "https://github.com/commerceblock/bulletproofs", tag = "v1.1.1"}
+curv = { git = "https://github.com/commerceblock/curv", features =  ["ec_secp256k1"] ,tag = "v0.2.8"}
+bulletproof = {git = "https://github.com/commerceblock/bulletproofs", tag = "v1.1.2"}
 serde_derive = "1.0"
 serde = "1.0"
 rayon = "1.0.3"
-
-[patch.crates-io]
-rust-gmp = { version = "0.5.0", features = ["serde_support"], git = "https://github.com/KZen-networks/rust-gmp" }
 
 [dev-dependencies]
 criterion = "0.2"
@@ -26,3 +23,4 @@ criterion = "0.2"
 name = "v_backup"
 path = "benches/v_backup.rs"
 harness = false
+#
