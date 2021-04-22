@@ -10,7 +10,7 @@ authors = [
 crate-type = ["lib"]
 
 [dependencies]
-curv = { git = "https://github.com/commerceblock/curv", features =  ["ec_secp256k1"] ,tag = "v0.2.3"}
+curv = { git = "https://github.com/commerceblock/curv", features =  ["ec_secp256k1"] ,tag = "v0.2.8"}
 bulletproof = {git = "https://github.com/commerceblock/bulletproofs", branch = "lockbox"}
 serde_derive = "1.0"
 serde = "1.0"
